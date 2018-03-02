@@ -1,0 +1,4 @@
+application:
+  deamon: true
+  pidfile: app.pid
+  main: app.main
