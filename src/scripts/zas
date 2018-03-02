@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 """Open Server Wrapper.
 """
 import os
@@ -16,6 +17,7 @@ GLOBAL_CONFIG = {}
 
 
 def main():
+    os.sys.path.append(os.getcwd())
     real_main = select(GLOBAL_CONFIG, "application.main")
     if not real_main:
         print("Item application.main required in config file.", file=os.sys.stderr)
@@ -40,9 +42,10 @@ def server(config):
 def start():
     """Start application server.
     """
-    deamon = select(GLOBAL_CONFIG, "application.deamon", False)
+    daemon = select(GLOBAL_CONFIG, "application.daemon", False)
+    workspace = select(GLOBAL_CONFIG, "application.workspace", None)
     pidfile = select(GLOBAL_CONFIG, "application.pidfile", DEFAULT_PIDFILE)
-    daemon_start(main, pidfile, deamon)
+    daemon_start(main, pidfile, daemon, workspace)
 
 
 @server.command()

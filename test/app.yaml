@@ -1,4 +1,4 @@
 application:
-  deamon: true
+  daemon: true
   pidfile: app.pid
   main: app.main
