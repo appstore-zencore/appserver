@@ -1,2 +1,0 @@
-# zas
-Zencore Application Server
