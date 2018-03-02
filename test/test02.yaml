@@ -1,0 +1,4 @@
+application:
+  daemon: false
+  pidfile: test02.pid
+  main: app.main
