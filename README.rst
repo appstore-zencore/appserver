@@ -1,6 +1,8 @@
 zas
 ===
 
+.. image:: https://travis-ci.org/appstore-zencore/zas.svg?branch=master
+    :target: https://travis-ci.org/appstore-zencore/zas
 
 Zencore Application Server
 
