@@ -16,7 +16,7 @@ requires = [
 
 setup(
     name="zas",
-    version="0.1.0",
+    version="0.1.1",
     description="Zencore Application Server.",
     long_description=long_description,
     url="https://github.com/appstore-zencore/zas",
@@ -37,6 +37,6 @@ setup(
     packages=find_packages("src", exclude=["scripts"]),
     package_dir={"": "src"},
     scripts=["src/scripts/zas",
-             "src/scripts/zas.py",      
-             ],
+             "src/scripts/zas.py",
+            ],
 )
