@@ -5,16 +5,35 @@ import os
 import yaml
 import click
 from zencore.utils.magic import import_from_string
-from zencore.utils.magic import select
+from dictop import select
 from zdas import daemon_start
 from zdas import daemon_stop
 
-
-
 DEFAULT_CONFIG_PATH = "config.yaml"
-DEFAULT_PIDFILE = "zas.pid"
+DEFAULT_PIDFILE = "server.pid"
 GLOBAL_CONFIG = {}
+CONFIG_LOADER = None
 
+def set_default_config_path(path):
+    global DEFAULT_CONFIG_PATH
+    DEFAULT_CONFIG_PATH = path
+
+def set_default_pidfile(pidfile):
+    global DEFAULT_PIDFILE
+    DEFAULT_PIDFILE = pidfile
+
+def set_config_loader(loader):
+    global CONFIG_LOADER
+    CONFIG_LOADER = loader
+
+def default_config_loader(config):
+    data = {}
+    if config:
+        if isinstance(config, str):
+            data = yaml.load(config)
+        elif isinstance(config, dict):
+            data = config
+    return data
 
 def main():
     os.sys.path.append(os.getcwd())
@@ -28,15 +47,11 @@ def main():
         os.sys.exit(2)
     real_main(GLOBAL_CONFIG)
 
-
 @click.group()
 @click.option("-c", "--config", default=DEFAULT_CONFIG_PATH, type=click.File("rb"), help="Config file path, use yaml format. Default to {}.".format(DEFAULT_CONFIG_PATH))
 def server(config):
-    if config:
-        data = yaml.load(config)
-        if data:
-            GLOBAL_CONFIG.update(data)
-
+    load_config = CONFIG_LOADER or default_config_loader
+    GLOBAL_CONFIG.update(load_config(config))
 
 @server.command()
 def start():
@@ -47,14 +62,12 @@ def start():
     pidfile = select(GLOBAL_CONFIG, "application.pidfile", DEFAULT_PIDFILE)
     daemon_start(main, pidfile, daemon, workspace)
 
-
 @server.command()
 def stop():
     """Stop application server.
     """
     pidfile = select(GLOBAL_CONFIG, "application.pidfile", DEFAULT_PIDFILE)
     daemon_stop(pidfile)
-
 
 @server.command()
 def reload():

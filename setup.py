@@ -10,13 +10,14 @@ with open(os.path.join(here, 'README.rst'), "r", encoding="utf-8") as fobj:
 requires = [
     "click",
     "pyyaml",
+    "dictop",
     "zdas",
     "zencore_utils",
 ]
 
 setup(
     name="zas",
-    version="0.1.1",
+    version="0.2.0",
     description="Zencore Application Server.",
     long_description=long_description,
     url="https://github.com/appstore-zencore/zas",
