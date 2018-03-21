@@ -13,10 +13,10 @@ def system_nowait(cmd):
     t.start()
 
 
-class TestZas(unittest.TestCase):
+class TestAppserver(unittest.TestCase):
 
     def test01(self):
-        system_nowait("zas -c test01.yaml start")
+        system_nowait("apprun -c test01.yaml start")
         time.sleep(2)
         pid = load_pid("test01.pid")
         assert pid
@@ -24,13 +24,13 @@ class TestZas(unittest.TestCase):
         assert is_running(pid)
         print(pid)
         print(os.getpid())
-        system_nowait("zas -c test01.yaml stop")
+        system_nowait("apprun -c test01.yaml stop")
         time.sleep(2)
         assert not is_running(pid)
 
     def test02(self):
         handler = signal.signal(signal.SIGTERM, signal.SIG_IGN)
-        system_nowait("zas -c test02.yaml start")
+        system_nowait("apprun -c test02.yaml start")
         time.sleep(2)
         signal.signal(signal.SIGTERM, handler)
 
@@ -41,6 +41,6 @@ class TestZas(unittest.TestCase):
 
         print(pid)
         print(os.getpid())
-        system_nowait("zas -c test02.yaml stop")
+        system_nowait("apprun -c test02.yaml stop")
         time.sleep(4)
         assert not is_running(pid)

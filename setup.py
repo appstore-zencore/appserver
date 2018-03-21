@@ -16,11 +16,11 @@ requires = [
 ]
 
 setup(
-    name="zas",
+    name="appserver",
     version="0.2.0",
-    description="Zencore Application Server.",
+    description="Application server framework help you write long run application.",
     long_description=long_description,
-    url="https://github.com/appstore-zencore/zas",
+    url="https://github.com/appstore-zencore/appserver",
     author="zencore",
     author_email="dobetter@zencore.cn",
     license="MIT",
@@ -32,12 +32,12 @@ setup(
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3 :: Only',
     ],
-    keywords=['zas'],
+    keywords=['appserver'],
     requires=requires,
     install_requires=requires,
     packages=find_packages("src", exclude=["scripts"]),
     package_dir={"": "src"},
-    scripts=["src/scripts/zas",
-             "src/scripts/zas.py",
+    scripts=["src/scripts/apprun",
+             "src/scripts/apprun.py",
             ],
 )

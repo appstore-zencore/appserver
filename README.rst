@@ -1,10 +1,10 @@
-zas
-===
+appserver
+=========
 
-.. image:: https://travis-ci.org/appstore-zencore/zas.svg?branch=master
-    :target: https://travis-ci.org/appstore-zencore/zas
+.. image:: https://travis-ci.org/appstore-zencore/appserver.svg?branch=master
+    :target: https://travis-ci.org/appstore-zencore/appserver
 
-Zencore Application Server
+Application server framework help you write long run application.
 
 
 Install
@@ -12,7 +12,7 @@ Install
 
 ::
 
-    pip install zas
+    pip install appserver
 
 
 Usage
@@ -20,8 +20,8 @@ Usage
 
 ::
 
-    E:\zas\src\scripts>python zas.py
-    Usage: zas.py [OPTIONS] COMMAND [ARGS]...
+    E:\zencore>apprun
+    Usage: apprun [OPTIONS] COMMAND [ARGS]...
 
     Options:
     -c, --config FILENAME  Config file path, use yaml format. Default to
