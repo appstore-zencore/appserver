@@ -29,11 +29,11 @@ def set_config_loader(loader):
 def default_config_loader(config):
     data = {}
     if config:
-        if isinstance(config, str):
-            data = yaml.load(config)
-        elif isinstance(config, dict):
+        if isinstance(config, dict):
             data = config
-    return data
+        else:
+            data = yaml.load(config) # click.File gets BufferedReader instance
+    return data or {}
 
 def main():
     os.sys.path.append(os.getcwd())
