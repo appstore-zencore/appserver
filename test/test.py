@@ -1,3 +1,5 @@
+
+import six
 import os
 import time
 import signal
@@ -22,8 +24,8 @@ class TestAppserver(unittest.TestCase):
         assert pid
         assert pid != os.getpid()
         assert is_running(pid)
-        print(pid)
-        print(os.getpid())
+        six.print_(pid)
+        six.print_(os.getpid())
         system_nowait("apprun -c test01.yaml stop")
         time.sleep(2)
         assert not is_running(pid)
@@ -39,8 +41,8 @@ class TestAppserver(unittest.TestCase):
         assert pid != os.getpid()
         assert is_running(pid)
 
-        print(pid)
-        print(os.getpid())
+        six.print_(pid)
+        six.print_(os.getpid())
         system_nowait("apprun -c test02.yaml stop")
         time.sleep(4)
         assert not is_running(pid)

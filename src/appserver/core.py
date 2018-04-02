@@ -39,11 +39,11 @@ def main():
     os.sys.path.append(os.getcwd())
     real_main = select(GLOBAL_CONFIG, "application.main")
     if not real_main:
-        print("Item application.main required in config file.", file=os.sys.stderr)
+        six.print_("Item application.main required in config file.", file=os.sys.stderr)
         os.sys.exit(1)
     real_main = import_from_string(real_main)
     if not real_main:
-        print("Load application.main = {} failed.".format(real_main), file=os.sys.stderr)
+        six.print_("Load application.main = {} failed.".format(real_main), file=os.sys.stderr)
         os.sys.exit(2)
     real_main(GLOBAL_CONFIG)
 
