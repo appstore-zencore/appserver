@@ -9,7 +9,7 @@ from zdas import is_running
 
 
 def system_nowait(cmd):
-    t = multiprocessing.Process(target=os.system, args=[cmd], daemon=True)
+    t = multiprocessing.Process(target=os.system, args=[cmd])
     t.start()
 
 
