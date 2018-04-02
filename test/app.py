@@ -7,7 +7,7 @@ import datetime
 
 def log(msg):
     with open("app.log", "a", encoding="utf-8") as output:
-        six.print_(msg, file=output)
+        six.print_(six.u(str(msg)), file=output)
 
 def main(config):
     global stop
