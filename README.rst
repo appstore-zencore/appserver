@@ -4,8 +4,15 @@ appserver
 .. image:: https://travis-ci.org/appstore-zencore/appserver.svg?branch=master
     :target: https://travis-ci.org/appstore-zencore/appserver
 
-Application server framework help you write long run application.
+NOTICE
+------
 
+Application renamed to appstart, see detail at https://github.com/appstore-zencore/appstart.
+
+About
+-----
+
+Application server framework help you write long run application.
 
 Install
 -------
