@@ -18,7 +18,7 @@ def system_nowait(cmd):
 class TestAppserver(unittest.TestCase):
 
     def test01(self):
-        system_nowait("apprun -c test01.yaml start")
+        system_nowait("appserver -c test01.yaml start")
         time.sleep(2)
         pid = load_pid("test01.pid")
         assert pid
@@ -26,13 +26,13 @@ class TestAppserver(unittest.TestCase):
         assert is_running(pid)
         six.print_(pid)
         six.print_(os.getpid())
-        system_nowait("apprun -c test01.yaml stop")
+        system_nowait("appserver -c test01.yaml stop")
         time.sleep(2)
         assert not is_running(pid)
 
     def test02(self):
         handler = signal.signal(signal.SIGTERM, signal.SIG_IGN)
-        system_nowait("apprun -c test02.yaml start")
+        system_nowait("appserver -c test02.yaml start")
         time.sleep(2)
         signal.signal(signal.SIGTERM, handler)
 
@@ -43,6 +43,6 @@ class TestAppserver(unittest.TestCase):
 
         six.print_(pid)
         six.print_(os.getpid())
-        system_nowait("apprun -c test02.yaml stop")
+        system_nowait("appserver -c test02.yaml stop")
         time.sleep(4)
         assert not is_running(pid)
