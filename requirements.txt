@@ -1,5 +1,5 @@
 click
 pyyaml
-dictop
 zdas
-zencore-utils
+dictop
+magic-import

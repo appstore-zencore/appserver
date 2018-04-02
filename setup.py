@@ -1,4 +1,5 @@
 import os
+from io import open
 from setuptools import setup
 from setuptools import find_packages
 
@@ -10,9 +11,9 @@ with open(os.path.join(here, 'README.rst'), "r", encoding="utf-8") as fobj:
 requires = [
     "click",
     "pyyaml",
+    "zdas",    
     "dictop",
-    "zdas",
-    "zencore_utils",
+    "magic_import",
 ]
 
 setup(

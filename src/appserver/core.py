@@ -4,7 +4,7 @@
 import os
 import yaml
 import click
-from zencore.utils.magic import import_from_string
+from magic_import import import_from_string
 from dictop import select
 from zdas import daemon_start
 from zdas import daemon_stop
