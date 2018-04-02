@@ -1,3 +1,4 @@
+import six
 import os
 import time
 import signal
@@ -5,7 +6,7 @@ import datetime
 
 def log(msg):
     with open("app.log", "a", encoding="utf-8") as output:
-        print(msg, file=output)
+        six.print_(msg, file=output)
 
 def main(config):
     global stop
