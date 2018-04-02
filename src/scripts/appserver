@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from appserver import server
+from appstart import server
 
 if __name__ == "__main__":
     server()

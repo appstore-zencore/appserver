@@ -1,13 +1,8 @@
-appserver
-=========
+appstart
+========
 
-.. image:: https://travis-ci.org/appstore-zencore/appserver.svg?branch=master
-    :target: https://travis-ci.org/appstore-zencore/appserver
-
-NOTICE
-------
-
-Application renamed to appstart, see detail at https://github.com/appstore-zencore/appstart.
+.. image:: https://travis-ci.org/appstore-zencore/appstart.svg?branch=master
+    :target: https://travis-ci.org/appstore-zencore/appstart
 
 About
 -----
@@ -19,7 +14,7 @@ Install
 
 ::
 
-    pip install appserver
+    pip install appstart
 
 
 Usage
@@ -27,8 +22,8 @@ Usage
 
 ::
 
-    E:\zencore>apprun
-    Usage: apprun [OPTIONS] COMMAND [ARGS]...
+    E:\zencore>appserver
+    Usage: appserver [OPTIONS] COMMAND [ARGS]...
 
     Options:
     -c, --config FILENAME  Config file path, use yaml format. Default to
@@ -57,11 +52,11 @@ Create a new type server
 
 ::
 
-    from zascore import server
-    from zascore import set_default_config_path
-    from zascore import set_default_pidfile
-    from zascore import set_config_loader
-    from zascore import default_config_loader
+    from appstart import server
+    from appstart import set_default_config_path
+    from appstart import set_default_pidfile
+    from appstart import set_config_loader
+    from appstart import default_config_loader
 
     def helloserver_loader(config):
         data = default_config_loader(config)
