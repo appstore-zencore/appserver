@@ -6,8 +6,8 @@ import yaml
 import click
 from magic_import import import_from_string
 from dictop import select
-from zdas import daemon_start
-from zdas import daemon_stop
+from daemon_application import daemon_start
+from daemon_application import daemon_stop
 
 DEFAULT_CONFIG_PATH = "config.yaml"
 DEFAULT_PIDFILE = "server.pid"

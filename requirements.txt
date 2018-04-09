@@ -1,6 +1,6 @@
 six
 click
 pyyaml
-zdas
+daemon-application
 dictop
 magic-import

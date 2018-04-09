@@ -12,14 +12,14 @@ requires = [
     "six",
     "click",
     "pyyaml",
-    "zdas",    
+    "daemon_application",    
     "dictop",
     "magic_import",
 ]
 
 setup(
     name="appstart",
-    version="0.3.0",
+    version="0.3.1",
     description="Application server framework help you write long run application.",
     long_description=long_description,
     url="https://github.com/appstore-zencore/appstart",
