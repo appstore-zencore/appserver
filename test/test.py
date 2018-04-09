@@ -6,8 +6,8 @@ import signal
 import threading
 import multiprocessing
 import unittest
-from zdas import load_pid
-from zdas import is_running
+from daemon_application import load_pid
+from daemon_application import is_running
 
 
 def system_nowait(cmd):
