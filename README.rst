@@ -43,6 +43,7 @@ Example Config
 
     application:
         deamon: true
+        workspace: /opt/application/workspace/
         pidfile: /tmp/appname.pid
         main: app.main
 
