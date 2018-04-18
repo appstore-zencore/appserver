@@ -18,11 +18,11 @@ requires = [
 ]
 
 setup(
-    name="appstart",
-    version="0.3.1",
+    name="appserver",
+    version="0.4.0",
     description="Application server framework help you write long run application.",
     long_description=long_description,
-    url="https://github.com/appstore-zencore/appstart",
+    url="https://github.com/appstore-zencore/appserver",
     author="zencore",
     author_email="dobetter@zencore.cn",
     license="MIT",
@@ -34,12 +34,13 @@ setup(
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3 :: Only',
     ],
-    keywords=['appstart'],
+    keywords=['appserver'],
     requires=requires,
     install_requires=requires,
-    packages=find_packages("src", exclude=["scripts"]),
+    packages=find_packages("src"),
     package_dir={"": "src"},
-    scripts=["src/scripts/appserver",
-             "src/scripts/appserver.py",
-            ],
+    scripts=["src/appserver.py"],
+    entry_points={
+        'console_scripts': ['appserver = appserver:server']
+    },
 )

@@ -75,3 +75,6 @@ def reload():
     """
     stop()
     start()
+
+if __name__ == "__main__":
+    server()

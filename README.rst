@@ -1,5 +1,5 @@
-appstart
-========
+appserver
+=========
 
 .. image:: https://travis-ci.org/appstore-zencore/appstart.svg?branch=master
     :target: https://travis-ci.org/appstore-zencore/appstart
@@ -14,7 +14,7 @@ Install
 
 ::
 
-    pip install appstart
+    pip install appserver
 
 
 Usage
@@ -53,11 +53,11 @@ Create a new type server
 
 ::
 
-    from appstart import server
-    from appstart import set_default_config_path
-    from appstart import set_default_pidfile
-    from appstart import set_config_loader
-    from appstart import default_config_loader
+    from appserver import server
+    from appserver import set_default_config_path
+    from appserver import set_default_pidfile
+    from appserver import set_config_loader
+    from appserver import default_config_loader
 
     def helloserver_loader(config):
         data = default_config_loader(config)
