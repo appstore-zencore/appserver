@@ -43,12 +43,12 @@ def main():
         os.sys.exit(1)
     real_main = import_from_string(real_main)
     if not real_main:
-        six.print_("Load application.main = {} failed.".format(real_main), file=os.sys.stderr)
+        six.print_("Load application.main = {name} failed.".format(name=real_main), file=os.sys.stderr)
         os.sys.exit(2)
     real_main(GLOBAL_CONFIG)
 
 @click.group()
-@click.option("-c", "--config", default=DEFAULT_CONFIG_PATH, type=click.File("rb"), help="Config file path, use yaml format. Default to {}.".format(DEFAULT_CONFIG_PATH))
+@click.option("-c", "--config", default=DEFAULT_CONFIG_PATH, type=click.File("rb"), help="Config file path, use yaml format. Default to {path}.".format(path=DEFAULT_CONFIG_PATH))
 def server(config):
     load_config = CONFIG_LOADER or default_config_loader
     GLOBAL_CONFIG.update(load_config(config))
