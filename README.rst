@@ -1,8 +1,8 @@
 appserver
 =========
 
-.. image:: https://travis-ci.org/appstore-zencore/appstart.svg?branch=master
-    :target: https://travis-ci.org/appstore-zencore/appstart
+.. image:: https://travis-ci.org/appstore-zencore/appserver.svg?branch=master
+    :target: https://travis-ci.org/appstore-zencore/appserver
 
 About
 -----
