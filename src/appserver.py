@@ -8,7 +8,7 @@ from dictop import select
 from daemon_application import daemon_start
 from daemon_application import daemon_stop
 
-DEFAULT_CONFIG_PATH = "config.yaml"
+DEFAULT_CONFIG_PATH = "config.yml"
 DEFAULT_PIDFILE = "server.pid"
 GLOBAL_CONFIG = {}
 CONFIG_LOADER = None
@@ -47,8 +47,9 @@ def main():
     real_main(GLOBAL_CONFIG)
 
 @click.group()
-@click.option("-c", "--config", default=DEFAULT_CONFIG_PATH, type=click.File("rb"), help="Config file path, use yaml format. Default to {path}.".format(path=DEFAULT_CONFIG_PATH))
+@click.option("-c", "--config", type=click.File("rb"), help="Config file path, use yaml format.")
 def server(config):
+    config = config or DEFAULT_CONFIG_PATH
     load_config = CONFIG_LOADER or default_config_loader
     GLOBAL_CONFIG.update(load_config(config))
 
