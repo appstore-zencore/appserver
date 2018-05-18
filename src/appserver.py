@@ -49,7 +49,8 @@ def main():
 @click.group()
 @click.option("-c", "--config", type=click.File("rb"), help="Config file path, use yaml format.")
 def server(config):
-    config = config or DEFAULT_CONFIG_PATH
+    if not config:
+        config = open(DEFAULT_CONFIG_PATH, "rb")
     load_config = CONFIG_LOADER or default_config_loader
     GLOBAL_CONFIG.update(load_config(config))
 
