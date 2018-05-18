@@ -19,7 +19,7 @@ requires = [
 
 setup(
     name="appserver",
-    version="0.4.0",
+    version="0.4.1",
     description="Application server framework help you write long run application.",
     long_description=long_description,
     url="https://github.com/appstore-zencore/appserver",
@@ -39,6 +39,7 @@ setup(
     install_requires=requires,
     packages=find_packages("src"),
     package_dir={"": "src"},
+    py_modules=['appserver'],
     scripts=["src/appserver.py"],
     entry_points={
         'console_scripts': ['appserver = appserver:server']
