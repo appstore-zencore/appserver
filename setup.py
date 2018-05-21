@@ -19,7 +19,7 @@ requires = [
 
 setup(
     name="appserver",
-    version="0.4.4",
+    version="0.4.5",
     description="Application server framework help you write long run application.",
     long_description=long_description,
     url="https://github.com/appstore-zencore/appserver",
