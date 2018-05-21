@@ -7,11 +7,13 @@ from magic_import import import_from_string
 from dictop import select
 from daemon_application import daemon_start
 from daemon_application import daemon_stop
+from functools import partial
+
 
 DEFAULT_CONFIG_PATH = "config.yml"
 DEFAULT_PIDFILE = "server.pid"
-GLOBAL_CONFIG = {}
 CONFIG_LOADER = None
+
 
 def set_default_config_path(path):
     global DEFAULT_CONFIG_PATH
@@ -34,9 +36,10 @@ def default_config_loader(config):
             data = yaml.load(config) # click.File gets BufferedReader instance
     return data or {}
 
-def main():
+
+def main(config):
     os.sys.path.append(os.getcwd())
-    real_main = select(GLOBAL_CONFIG, "application.main")
+    real_main = select(config, "application.main")
     if not real_main:
         click.echo("Item application.main required in config file.", file=os.sys.stderr)
         os.sys.exit(1)
@@ -44,38 +47,49 @@ def main():
     if not real_main:
         click.echo("Load application.main = {name} failed.".format(name=real_main), file=os.sys.stderr)
         os.sys.exit(2)
-    real_main(GLOBAL_CONFIG)
+    real_main(config)
+
 
 @click.group()
 @click.option("-c", "--config", type=click.File("rb"), help="Config file path, use yaml format.")
-def server(config):
+@click.pass_context
+def server(context, config):
     if not config:
         config = open(DEFAULT_CONFIG_PATH, "rb")
     load_config = CONFIG_LOADER or default_config_loader
-    GLOBAL_CONFIG.update(load_config(config))
+    context.config = load_config(config)
+
 
 @server.command()
-def start():
+@click.pass_context
+def start(context):
     """Start application server.
     """
-    daemon = select(GLOBAL_CONFIG, "application.daemon", False)
-    workspace = select(GLOBAL_CONFIG, "application.workspace", None)
-    pidfile = select(GLOBAL_CONFIG, "application.pidfile", DEFAULT_PIDFILE)
-    daemon_start(main, pidfile, daemon, workspace)
+    config = context.config
+    daemon = select(config, "application.daemon", False)
+    workspace = select(config, "application.workspace", None)
+    pidfile = select(config, "application.pidfile", DEFAULT_PIDFILE)
+    daemon_start(partial(main, config), pidfile, daemon, workspace)
+
 
 @server.command()
-def stop():
+@click.pass_context
+def stop(context):
     """Stop application server.
     """
-    pidfile = select(GLOBAL_CONFIG, "application.pidfile", DEFAULT_PIDFILE)
+    config = context.config
+    pidfile = select(config, "application.pidfile", DEFAULT_PIDFILE)
     daemon_stop(pidfile)
 
+
 @server.command()
-def reload():
+@click.pass_context
+def reload(context):
     """Reload application server.
     """
-    stop()
-    start()
+    stop(context)
+    start(context)
+
 
 if __name__ == "__main__":
     server()
