@@ -57,6 +57,7 @@ def server(context, config):
     if not config:
         config = open(DEFAULT_CONFIG_PATH, "rb")
     load_config = CONFIG_LOADER or default_config_loader
+    context.obj = {}
     context.obj["config"] = load_config(config)
 
 
