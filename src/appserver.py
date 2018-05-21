@@ -57,7 +57,7 @@ def server(context, config):
     if not config:
         config = open(DEFAULT_CONFIG_PATH, "rb")
     load_config = CONFIG_LOADER or default_config_loader
-    context.config = load_config(config)
+    context.obj["config"] = load_config(config)
 
 
 @server.command()
@@ -65,7 +65,7 @@ def server(context, config):
 def start(context):
     """Start application server.
     """
-    config = context.config
+    config = context.obj["config"]
     daemon = select(config, "application.daemon", False)
     workspace = select(config, "application.workspace", None)
     pidfile = select(config, "application.pidfile", DEFAULT_PIDFILE)
@@ -77,7 +77,7 @@ def start(context):
 def stop(context):
     """Stop application server.
     """
-    config = context.config
+    config = context.obj["config"]
     pidfile = select(config, "application.pidfile", DEFAULT_PIDFILE)
     daemon_stop(pidfile)
 
