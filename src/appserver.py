@@ -54,6 +54,7 @@ def main(config):
 @click.option("-c", "--config", type=click.File("rb"), help="Config file path, use yaml format.")
 @click.pass_context
 def server(context, config):
+    config_close_flag = False
     if not config:
         config = open(DEFAULT_CONFIG_PATH, "rb")
         config_close_flag = True
